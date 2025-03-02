@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using authmvc.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace authmvc.Controllers
@@ -18,6 +19,7 @@ namespace authmvc.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult Privacy()
         {
             return View();
