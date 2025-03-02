@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using authmvc.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace authmvc.Data
@@ -9,5 +10,6 @@ namespace authmvc.Data
             : base(options)
         {
         }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
     }
 }
