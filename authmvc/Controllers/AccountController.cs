@@ -2,6 +2,7 @@
 using authmvc.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace authmvc.Controllers
 {
@@ -26,8 +27,24 @@ namespace authmvc.Controllers
                 await _roleManager.CreateAsync(new IdentityRole(SD.Admin));
                 await _roleManager.CreateAsync(new IdentityRole(SD.User));
             }
+
+            List<SelectListItem> listItems = new();
+            listItems.Add(new SelectListItem()
+            {
+                Value = SD.Admin,
+                Text = SD.Admin
+            });
+            listItems.Add(new SelectListItem()
+            {
+                Value = SD.User,
+                Text = SD.User
+            });
+
             ViewData["ReturnUrl"] = returnurl;
-            RegisterViewModel registerViewModel = new();
+            RegisterViewModel registerViewModel = new()
+            {
+                RoleList = listItems
+            };
             return View(registerViewModel);
         }
 
