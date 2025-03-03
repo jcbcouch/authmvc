@@ -15,6 +15,11 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+builder.Services.ConfigureApplicationCookie(opt =>
+{
+    opt.AccessDeniedPath = new PathString("/Account/NoAccess");
+});
+
 builder.Services.Configure<IdentityOptions>(opt =>
 {
     opt.Password.RequireDigit = false;

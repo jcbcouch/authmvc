@@ -21,7 +21,8 @@ namespace authmvc.Controllers
             return View();
         }
 
-        [Authorize]
+        //[Authorize]
+        [Authorize(Roles = SD.Admin)]
         public IActionResult Privacy()
         {
             return View();
